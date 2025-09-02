@@ -37,4 +37,12 @@ public class ArrayTest {
         assertEquals("e", sol.reverseVowels("e"));
         assertEquals("", sol.reverseVowels(""));
     }
+
+    @Test
+    public void reverseWordsTest() {
+        Solution sol = new Solution();
+        assertEquals("blue is sky the", sol.reverseWords("the sky is blue"));
+        assertEquals("blue is sky the", sol.reverseWords("the sky is    blue"));
+        assertEquals("blue is sky the", sol.reverseWords("   the sky  is       blue"));
+    }
 }

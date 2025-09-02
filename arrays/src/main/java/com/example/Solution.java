@@ -65,4 +65,19 @@ public class Solution {
 
         return String.valueOf(letters);
     }
+
+    public String reverseWords(String s) {
+
+        String[] splits = s.split(" ");
+        Deque<String> words = new ArrayDeque<>();
+
+        for (String split : splits) {
+            if (split.length() >= 1) {
+                words.push(split);
+            }
+        }
+
+        return String.join(" ", words);
+    }
+
 }
