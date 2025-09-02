@@ -16,13 +16,25 @@ public class ArrayTest {
     }
 
     @Test
+    public void basicReverseVowelsTest() {
+        Solution sol = new Solution();
+        assertEquals("leotcede", sol.basicReverseVowels("leetcode"));
+        assertEquals("AceCreIm", sol.basicReverseVowels("IceCreAm"));
+        assertEquals("e", sol.basicReverseVowels("e"));
+        assertEquals("ae", sol.basicReverseVowels("ea"));
+        assertEquals("aa", sol.basicReverseVowels("aa"));
+        assertEquals("", sol.basicReverseVowels(""));
+    }
+
+    @Test
     public void reverseVowelsTest() {
         Solution sol = new Solution();
         assertEquals("leotcede", sol.reverseVowels("leetcode"));
         assertEquals("AceCreIm", sol.reverseVowels("IceCreAm"));
-        assertEquals("e", sol.reverseVowels("e"));
+        assertEquals("eee", sol.reverseVowels("eee"));
         assertEquals("ae", sol.reverseVowels("ea"));
-        assertEquals("aa", sol.reverseVowels("aa"));
+        assertEquals("a", sol.reverseVowels("a"));
+        assertEquals("e", sol.reverseVowels("e"));
         assertEquals("", sol.reverseVowels(""));
     }
 }

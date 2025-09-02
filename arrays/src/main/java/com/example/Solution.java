@@ -1,10 +1,38 @@
 package com.example;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Solution {
+
+    public String reverseVowels(String s) {
+        if (s.length() <= 1) {
+            return s;
+        }
+
+        char[] letters = s.toCharArray();
+        String vowels = "aeiouAEIOU";
+        Deque<Character> toReverse = new ArrayDeque<>();
+
+        for (char c : letters) {
+            if (vowels.contains(c + "")) {
+                toReverse.push(c);
+            }
+        }
+
+        for (int i = 0; i < letters.length; i++) {
+            if (vowels.contains(letters[i] + "")) {
+                letters[i] = toReverse.pop();
+            }
+        }
+
+        return String.valueOf(letters);
+    }
+
     /*
      * reverse all the vowel letter
      */
-    public String reverseVowels(String s) {
+    public String basicReverseVowels(String s) {
         if (s.length() <= 1) {
             return s;
         }
