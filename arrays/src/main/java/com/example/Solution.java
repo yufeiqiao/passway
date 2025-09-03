@@ -80,4 +80,89 @@ public class Solution {
         return String.join(" ", words);
     }
 
+    public int[] productExceptSelf(int[] nums) {
+
+        int[] leftProduct = new int[nums.length];
+        leftProduct[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            leftProduct[i] = leftProduct[i - 1] * nums[i - 1];
+        }
+
+        int[] rightProduct = new int[nums.length];
+        rightProduct[nums.length - 1] = 1;
+        for (int j = nums.length - 2; j >= 0; j--) {
+            rightProduct[j] = rightProduct[j + 1] * nums[j + 1];
+        }
+
+        int[] product = new int[nums.length];
+        for (int k = 0; k < nums.length; k++) {
+            product[k] = leftProduct[k] * rightProduct[k];
+        }
+
+        return product;
+    }
+
+    public boolean increasingTriplet(int[] nums) {
+        int size = nums.length;
+        if (size < 3) {
+            return false;
+        }
+
+        int[] leftMin = new int[size];
+        leftMin[0] = nums[0];
+        for (int i = 1; i < size; i++) {
+            leftMin[i] = (leftMin[i - 1] < nums[i]) ? leftMin[i - 1] : nums[i];
+        }
+
+        int[] rightMax = new int[size];
+        rightMax[size - 1] = nums[size - 1];
+        for (int i = size - 2; i >= 0; i--) {
+            rightMax[i] = (rightMax[i + 1] > nums[i]) ? rightMax[i + 1] : nums[i];
+        }
+
+        for (int i = 1; i < size - 1; i++) {
+            if (nums[i] > leftMin[i] && nums[i] < rightMax[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int compress(char[] chars) {
+        if (chars.length == 1) {
+            return 1;
+        }
+        int write = 0;
+        char last = chars[0];
+        int count = 1;
+        for (int i = 1; i < chars.length; i++) {
+            if (chars[i] == last) {
+                count++;
+                if (i == chars.length - 1) {
+                    chars[write++] = last;
+                    write = writeNum(chars, count, write);
+                }
+            } else {
+                // new char, now write last
+                chars[write++] = last;
+                last = chars[i];
+                if (count > 1) {
+                    write = writeNum(chars, count, write);
+                    count = 1;
+                }
+                if (i == chars.length - 1) {
+                    chars[write++] = chars[i];
+                }
+            }
+        }
+        return write;
+    }
+
+    private int writeNum(char[] chars, int count, int start) {
+        char[] num = Integer.valueOf(count).toString().toCharArray();
+        for (char c : num) {
+            chars[start++] = c;
+        }
+        return start;
+    }
 }
