@@ -46,4 +46,16 @@ public class PointersTest {
         assertEquals(1, sol.maxArea(t4));
     }
 
+    @Test
+    public void maxOperationsTest() {
+        int[] m1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+        assertEquals(4, sol.maxOperations(m1, 10));
+        assertEquals(4, sol.maxOperations(m1, 19));
+        assertEquals(0, sol.maxOperations(m1, 26));
+        assertEquals(1, sol.maxOperations(m1, 3));
+        assertEquals(0, sol.maxOperations(m1, 1));
+        int[] m2 = new int[] { 3, 1, 3, 4, 3 };
+        assertEquals(1, sol.maxOperations(m2, 6));
+    }
+
 }
