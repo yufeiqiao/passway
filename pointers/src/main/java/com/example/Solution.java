@@ -35,4 +35,19 @@ public class Solution {
         return (pointer >= ref.length);
     }
 
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int max = 0;
+
+        while (left < right) {
+            int width = right - left;
+            int hgt = (height[left] < height[right]) ? height[left++] : height[right--];
+            int area = width * hgt;
+            max = (area < max) ? max : area;
+        }
+
+        return max;
+    }
+
 }

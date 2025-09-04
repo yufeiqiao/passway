@@ -1,6 +1,7 @@
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeNoException;
 
 import org.junit.Test;
 
@@ -31,6 +32,18 @@ public class PointersTest {
         assertEquals(true, sol.isSubsequence("", "ahbgdc"));
         assertEquals(false, sol.isSubsequence("axc", ""));
 
+    }
+
+    @Test
+    public void maxAreaTest() {
+        int[] t1 = new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+        assertEquals(49, sol.maxArea(t1));
+        int[] t2 = new int[] { 11, 8, 6, 22, 5, 4, 0, 12, 3, 3, 8, 3, 7 };
+        assertEquals(84, sol.maxArea(t2));
+        int[] t3 = new int[] { 1, 1 };
+        assertEquals(1, sol.maxArea(t3));
+        int[] t4 = new int[] { 1, 2 };
+        assertEquals(1, sol.maxArea(t4));
     }
 
 }
