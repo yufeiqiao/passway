@@ -82,4 +82,13 @@ public class PointersTest {
         assertEquals(0, sol.maxVowels("b", 1));
     }
 
+    @Test
+    public void longestOnesTest() {
+        int[] t1 = new int[] { 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 };
+        assertEquals(10, sol.longestOnes(t1, 3));
+        // assertEquals(7, sol.longestOnes(t1, 2));
+        // assertEquals(6, sol.longestOnes(t1, 1));
+        assertEquals(4, sol.longestOnes(t1, 0));
+    }
+
 }

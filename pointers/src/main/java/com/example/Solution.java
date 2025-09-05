@@ -1,6 +1,8 @@
 package com.example;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Queue;
 
 public class Solution {
 
@@ -107,6 +109,35 @@ public class Solution {
             maxCount = (count < maxCount) ? maxCount : count;
         }
         return maxCount;
+    }
+
+    // leetcode 1004
+    public int longestOnes(int[] nums, int k) {
+        Queue<Integer> queue = new ArrayDeque<>();
+        int maxLength = 0;
+        boolean polled = false;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                if (k == 0) {
+                    while (queue.size() > 0) {
+                        if (queue.poll() == 0) {
+                            polled = true;
+                            break;
+                        }
+                    }
+                } else {
+                    k--;
+                }
+                if (polled) {
+                    queue.offer(0);
+                }
+            } else {
+                queue.offer(1);
+            }
+
+            maxLength = (maxLength > queue.size()) ? maxLength : queue.size();
+        }
+        return maxLength;
     }
 
 }
