@@ -1,14 +1,19 @@
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeNoException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.example.Solution;
 
 public class PointersTest {
-    Solution sol = new Solution();
+    Solution sol;
+
+    @Before
+    public void setup() {
+        sol = new Solution();
+    }
 
     @Test
     public void shouldAnswerWithTrue() {
@@ -56,6 +61,16 @@ public class PointersTest {
         assertEquals(0, sol.maxOperations(m1, 1));
         int[] m2 = new int[] { 3, 1, 3, 4, 3 };
         assertEquals(1, sol.maxOperations(m2, 6));
+    }
+
+    @Test
+    public void findMaxAverageTest() {
+        int[] f1 = new int[] { 1, 12, -5, -6, 50, 3 };
+
+        assertEquals(12.75, sol.findMaxAverage(f1, 4), 0.0001);
+        assertEquals(15.66667, sol.findMaxAverage(f1, 3), 0.0001);
+        assertEquals(26.5, sol.findMaxAverage(f1, 2), 0.0001);
+        assertEquals(50.000, sol.findMaxAverage(f1, 1), 0.0001);
     }
 
 }
