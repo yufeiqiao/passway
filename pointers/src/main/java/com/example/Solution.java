@@ -90,4 +90,23 @@ public class Solution {
         return maxSum / k;
     }
 
+    // leetcode 1456
+    public int maxVowels(String s, int k) {
+        char[] word = s.toCharArray();
+        int[] isVowel = new int[word.length];
+        String vowels = "aeiou";
+        int count = 0;
+        for (int i = 0; i < k; i++) {
+            isVowel[i] = (vowels.indexOf(word[i]) >= 0) ? 1 : 0;
+            count += isVowel[i];
+        }
+        int maxCount = count;
+        for (int i = k; i < word.length; i++) {
+            isVowel[i] = (vowels.indexOf(word[i]) >= 0) ? 1 : 0;
+            count += isVowel[i] - isVowel[i - k];
+            maxCount = (count < maxCount) ? maxCount : count;
+        }
+        return maxCount;
+    }
+
 }

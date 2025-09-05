@@ -73,4 +73,13 @@ public class PointersTest {
         assertEquals(50.000, sol.findMaxAverage(f1, 1), 0.0001);
     }
 
+    @Test
+    public void maxVowelsTest() {
+        assertEquals(3, sol.maxVowels("abciiidef", 3));
+        assertEquals(3, sol.maxVowels("abciiidef", 4));
+        assertEquals(4, sol.maxVowels("abciiidef", 5));
+        assertEquals(2, sol.maxVowels("aeiou", 2));
+        assertEquals(0, sol.maxVowels("b", 1));
+    }
+
 }
