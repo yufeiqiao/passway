@@ -74,4 +74,17 @@ public class ArrayTest {
         assertEquals(ans.length(), size);
         assertEquals(ans, res);
     }
+
+    @Test
+    public void largestAltitudeTest() {
+        Solution sol = new Solution();
+        int[] l1 = new int[] { 1, -8, 5, 6, 2, -3 };
+        assertEquals(6, sol.largestAltitude(l1));
+        int[] l2 = new int[] { -5, 1, 5, 0, -7 };
+        assertEquals(1, sol.largestAltitude(l2));
+        int[] l3 = new int[] { -4, -3, -2, -1, 4, 3, 2 };
+        assertEquals(0, sol.largestAltitude(l3));
+        int[] l4 = new int[] { -4 };
+        assertEquals(0, sol.largestAltitude(l4));
+    }
 }
