@@ -87,4 +87,16 @@ public class ArrayTest {
         int[] l4 = new int[] { -4 };
         assertEquals(0, sol.largestAltitude(l4));
     }
+
+    @Test
+    public void pivotIndexTest() {
+        Solution sol = new Solution();
+        int[] p1 = new int[] { 1, 7, 3, 6, 5, 6 };
+        int[] p2 = new int[] { 1, 2, 3 };
+        int[] p3 = new int[] { 2, 1, -1 };
+
+        assertEquals(3, sol.pivotIndex(p1));
+        assertEquals(-1, sol.pivotIndex(p2));
+        assertEquals(0, sol.pivotIndex(p3));
+    }
 }
