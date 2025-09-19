@@ -33,4 +33,15 @@ public class SetMapTest {
                 sol.findDifference(nums21, nums22));
     }
 
+    @Test
+    public void uniqueOccurrencesTest() {
+        int[] u1 = new int[] { 1, 2, 2, 1, 1, 3 };
+        assertEquals(true, sol.uniqueOccurrences(u1));
+
+        int[] u2 = new int[] { 1, 2 };
+        assertEquals(false, sol.uniqueOccurrences(u2));
+        int[] u3 = new int[] { -3, 0, 1, -3, 1, 1, 1, -3, 10, 0 };
+        assertEquals(true, sol.uniqueOccurrences(u3));
+    }
+
 }
