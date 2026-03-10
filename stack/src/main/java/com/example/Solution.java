@@ -62,4 +62,52 @@ public class Solution {
             return collide(stack, asteroid);
         }
     }
+
+    // leetcode 394, passed, mar 10 2026
+    public String decodeString(String s) {
+        Deque<String> stack = new ArrayDeque<>();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                if (sb.length() > 0) {
+                    stack.push(sb.toString());
+                    sb.setLength(0);
+                }
+
+                int j = s.substring(i).indexOf('[') + i;
+                stack.push(s.substring(i, j));
+
+                i = j;
+            } else if (s.charAt(i) == ']') {
+                if (sb.length() > 0) {
+                    stack.push(sb.toString());
+                    sb.setLength(0);
+                }
+
+                while (!Character.isDigit(stack.peek().charAt(0))) {
+                    sb.insert(0, stack.pop());
+                }
+                int count = Integer.parseInt(stack.pop());
+
+                while (count-- > 0) {
+                    stack.push(sb.toString());
+                }
+                sb.setLength(0);
+            } else {
+                sb.append(s.charAt(i));
+            }
+        }
+        if (sb.length() > 0) {
+            stack.push(sb.toString());
+        }
+        sb.setLength(0);
+
+        while (stack.peek() != null) {
+            sb.insert(0, stack.pop());
+        }
+
+        return sb.toString();
+    }
+
 }

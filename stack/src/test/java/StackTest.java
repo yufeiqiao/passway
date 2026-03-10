@@ -33,4 +33,12 @@ public class StackTest {
         int[] d = new int[] { 10, 2, -5 };
         assertArrayEquals(new int[] { 10 }, sol.asteroidCollision(d));
     }
+
+    @Test
+    public void decodeStringTest() {
+        assertEquals("abbbbcd", sol.decodeString("a4[b]cd"));
+        assertEquals("accaccacc", sol.decodeString("3[a2[c]]"));
+        assertEquals("aaabcbc", sol.decodeString("3[a]2[bc]"));
+        assertEquals("abcabccdcdcdef", sol.decodeString("2[abc]3[cd]ef"));
+    }
 }
