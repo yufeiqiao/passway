@@ -33,7 +33,7 @@ public class ListTest {
     }
 
     @Test
-    public void oddEvenList() {
+    public void oddEvenListTest() {
         assertArrayEquals(new int[] { 1, 3, 2, 4 }, lsol.oddEvenList(h).toArray());
         ListNode b = ListNode.ListNodeFactory(new int[] { 1, 2, 3, 4, 5 });
         assertArrayEquals(new int[] { 1, 3, 5, 2, 4 }, lsol.oddEvenList(b).toArray());
@@ -43,6 +43,18 @@ public class ListTest {
         assertArrayEquals(new int[] { 1 }, lsol.oddEvenList(d).toArray());
         ListNode e = ListNode.ListNodeFactory(new int[] { 1, 2 });
         assertArrayEquals(new int[] { 1, 2 }, lsol.oddEvenList(e).toArray());
+    }
+
+    @Test
+    public void reversedListTest() {
+        assertArrayEquals(new int[] { 4, 3, 2, 1 }, lsol.reverseList(h).toArray());
+        ListNode b = ListNode.ListNodeFactory(new int[] { 1, 2, 3, 4, 5 });
+        assertArrayEquals(new int[] { 5, 4, 3, 2, 1 }, lsol.reverseList(b).toArray());
+
+        ListNode d = ListNode.ListNodeFactory(new int[] { 1 });
+        assertArrayEquals(new int[] { 1 }, lsol.reverseList(d).toArray());
+        ListNode e = ListNode.ListNodeFactory(new int[] { 1, 2 });
+        assertArrayEquals(new int[] { 1, 2 }, lsol.reverseList(e).toArray());
     }
 
 }
