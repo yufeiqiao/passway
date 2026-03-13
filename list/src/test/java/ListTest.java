@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,6 +56,17 @@ public class ListTest {
         assertArrayEquals(new int[] { 1 }, lsol.reverseList(d).toArray());
         ListNode e = ListNode.ListNodeFactory(new int[] { 1, 2 });
         assertArrayEquals(new int[] { 1, 2 }, lsol.reverseList(e).toArray());
+    }
+
+    @Test
+    public void pairSumTest() {
+        assertEquals(5, lsol.pairSum(h));
+        ListNode b = ListNode.ListNodeFactory(new int[] { 1, 2, 3, 4, 5, 21 });
+        assertEquals(22, lsol.pairSum(b));
+        ListNode c = ListNode.ListNodeFactory(new int[] { 4, 2, 2, 3 });
+        assertEquals(7, lsol.pairSum(c));
+        ListNode d = ListNode.ListNodeFactory(new int[] { 1, 100000 });
+        assertEquals(100001, lsol.pairSum(d));
     }
 
 }

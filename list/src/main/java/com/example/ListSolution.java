@@ -1,7 +1,9 @@
 package com.example;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 import java.util.Queue;
 
 public class ListSolution {
@@ -71,5 +73,34 @@ public class ListSolution {
         }
 
         return head;
+    }
+
+    // leetcode 2130
+    public int pairSum(ListNode head) {
+
+        ListNode fast = head, slow = head;
+        boolean flag = true;
+
+        Deque<Integer> half = new ArrayDeque<>();
+
+        while (fast != null) {
+            if (flag) {
+                half.push(slow.val);
+                slow = slow.next;
+            }
+
+            flag = !flag;
+            fast = fast.next;
+        }
+
+        int max = 0;
+        while (slow != null) {
+            int sum = slow.val + half.pop();
+            max = (sum < max) ? max : sum;
+
+            slow = slow.next;
+        }
+
+        return max;
     }
 }
